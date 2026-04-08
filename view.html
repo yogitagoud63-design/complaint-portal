@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Complaint Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body><body>
+
+<h1 style="text-align:center; color:#2c3e50;">
+    Smart Complaint Portal
+</h1>
+
+<h2>All Complaints</h2>
+
+<h2>All Complaints</h2>
+
+<ul id="list"></ul>
+
+<a href="dashboard.html">Back</a>
+
+<script>
+let complaints = JSON.parse(localStorage.getItem("complaints")) || [];
+
+let list = document.getElementById("list");
+
+if(complaints.length === 0){
+    list.innerHTML = "No complaints found";
+} else {
+    complaints.forEach((item, index) => {
+        list.innerHTML += `
+        <li>
+            <b>${item.name}</b>: ${item.text} <br>
+            <small>${item.time}</small> <br>
+
+            Status: <b style="color:${item.status === 'Pending' ? 'red' : 'green'}">
+            ${item.status}
+            </b> <br>
+
+            <button onclick="changeStatus(${index})">Change Status</button>
+            <button onclick="deleteComplaint(${index})">Delete</button>
+        </li>
+        <hr>
+        `;
+    });
+}
+</script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
