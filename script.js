@@ -55,4 +55,20 @@ function changeStatus(index){
 
 function logout(){
     window.location.href = "index.html";
+}function login() {
+  let user = document.getElementById("username").value;
+  let pass = document.getElementById("password").value;
+
+  // simple demo login
+  if (user === "admin" && pass === "1234") {
+    localStorage.setItem("role", "admin");
+    window.location.href = "dashboard.html";
+  } 
+  else if (user !== "" && pass !== "") {
+    localStorage.setItem("role", "user");
+    window.location.href = "complaint.html";
+  } 
+  else {
+    alert("Invalid Login");
+  }
 }
